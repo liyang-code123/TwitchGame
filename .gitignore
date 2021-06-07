@@ -2,3 +2,4 @@
 .idea
 target/
 target
+src/main/resources/config.properties
