@@ -1,6 +1,5 @@
 package com.twitch.twitchgame.servlet;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.twitch.twitchgame.external.TwitchClient;
 import com.twitch.twitchgame.external.TwitchException;
 
@@ -21,15 +20,9 @@ public class SearchServlet extends HttpServlet {
 
         TwitchClient client = new TwitchClient();
         try {
-            response.setContentType("application/json; charset = UTF-8");
-            response.getWriter().print(
-                    new ObjectMapper().writeValueAsString(
-                            client.searchItems(gameId)
-                    )
-            );
+           ServletUtil.writeData(response, client.searchItems(gameId));
         } catch(TwitchException e) {
             throw new ServletException(e);
         }
     }
-
 }
