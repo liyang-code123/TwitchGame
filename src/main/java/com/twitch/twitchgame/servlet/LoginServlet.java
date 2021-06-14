@@ -17,8 +17,8 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Read user data from the request body.
-        ObjectMapper mapper = new ObjectMapper();
-        LoginRequestBody body = mapper.readValue(request.getReader(), LoginRequestBody.class);
+       LoginRequestBody body = ServletUtil.readRequestBody(LoginRequestBody.class, request);
+
         if  (body == null) {
             System.err.println("User info incorrect.");
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);

@@ -26,8 +26,7 @@ public class FavoriteServlet extends HttpServlet {
         }
         String userId = (String) session.getAttribute("user_id");
 
-        ObjectMapper mapper = new ObjectMapper();
-        FavoriteRequestBody body = mapper.readValue(request.getReader(), FavoriteRequestBody.class);
+        FavoriteRequestBody body = ServletUtil.readRequestBody(FavoriteRequestBody.class, request);
 
         if (body == null) {
             System.err.println("Convert JSON to FavoriteRequestBody failed.");
@@ -50,8 +49,7 @@ public class FavoriteServlet extends HttpServlet {
         }
         String userId = (String) session.getAttribute("user_id");
 
-        ObjectMapper mapper = new ObjectMapper();
-        FavoriteRequestBody body = mapper.readValue(request.getReader(), FavoriteRequestBody.class);
+        FavoriteRequestBody body = ServletUtil.readRequestBody(FavoriteRequestBody.class, request);
 
         if(body == null) {
             System.err.println("Convert JSON to FavoriteRequestBody failed.");
